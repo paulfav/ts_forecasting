@@ -10,6 +10,7 @@ class RevIN(nn.Module):
         :param affine: if True, RevIN has learnable affine parameters
         """
         super(RevIN, self).__init__()
+        print(num_features)
         self.num_features = num_features
         self.eps = eps
         self.affine = affine
@@ -49,6 +50,8 @@ class RevIN(nn.Module):
             x = x - self.mean
         x = x / self.stdev
         if self.affine:
+            #print(x)
+            #print(self.affine_weight)
             x = x * self.affine_weight
             x = x + self.affine_bias
         return x

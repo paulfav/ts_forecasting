@@ -1,0 +1,13 @@
+
+
+
+
+Attention : dec_in must be 1 if features is S
+
+python run.py --model Autoformer --data Close --data_path close_data.csv --features S --dec_in 1 --enc_in 1 --target close_AAPL --freq h --use_gpu False 
+
+
+
+Attention : dec_in must be 8 if features is MS 
+
+python run.py --model Autoformer --data Close --data_path close_data.csv --features MS --dec_in 8 --enc_in 8 --c_out 8 --target close_AAPL --freq h --use_gpu False 

@@ -73,6 +73,10 @@ class Model(nn.Module):
 
     def forward(self, x_enc, x_mark_enc, x_dec, x_mark_dec,
                 enc_self_mask=None, dec_self_mask=None, dec_enc_mask=None):
+        """print("xenc",  x_enc.shape)
+        print("xdec", x_dec.shape)
+        print("xmark ence", x_mark_enc.shape)
+        print("xmarkdec", x_mark_dec.shape)"""
         # decomp init
         mean = torch.mean(x_enc, dim=1).unsqueeze(1).repeat(1, self.pred_len, 1)
         zeros = torch.zeros([x_dec.shape[0], self.pred_len, x_dec.shape[2]], device=x_enc.device)
