@@ -44,7 +44,7 @@ if __name__ == '__main__':
     parser.add_argument('--enc_in', type=int, default=5, help='channel or dimension')
  
 
-    parser.add_argument('--patch_len', type=int, default=16, help='patch length')
+    parser.add_argument('--patch_len', type=int, default=4, help='patch length')
     parser.add_argument('--stride', type=int, default=8, help='stride')
     parser.add_argument('--padding_patch', default='end', help='None: None; end: padding on the end')
     parser.add_argument('--d_model', type=int, default=2
