@@ -14,6 +14,7 @@ import torch
 import torch.nn as nn
 from torch import optim
 from torch.optim import lr_scheduler 
+import pandas as pda
 
 import os
 import time
@@ -269,16 +270,16 @@ class Exp_Main(Exp_Basic):
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
-        mae, mse, rmse, mape, mspe, rse, corr = metric(preds, trues)
-        print('mse:{}, mae:{}, rse:{}'.format(mse, mae, rse))
+        mae, mse, rmse, mape, mspe = metric(preds, trues)
+        print('mse:{}, mae:{}'.format(mse, mae))
         f = open("result.txt", 'a')
         f.write(setting + "  \n")
-        f.write('mse:{}, mae:{}, rse:{}'.format(mse, mae, rse))
+        f.write('mse:{}, mae:{}'.format(mse, mae))
         f.write('\n')
         f.write('\n')
         f.close()
-
-        np.save(folder_path + 'metrics.npy', np.array([mae, mse, rmse, mape, mspe,rse, corr]))
+      
+        np.save(folder_path + 'metrics.npy', np.array([mae, mse, rmse, mape, mspe]))
         np.save(folder_path + 'pred.npy', preds)
         np.save(folder_path + 'true.npy', trues)
         np.save(folder_path + 'x.npy', inputx)
