@@ -31,11 +31,11 @@ if __name__ == '__main__':
    
 
     # task
-    parser.add_argument('--seq_len', type=int, default=2, help='input sequence length')
+    parser.add_argument('--seq_len', type=int, default=7, help='input sequence length')
     parser.add_argument('--pred_len', type=int, default=1, help='prediction sequence length')
     
 
-    parser.add_argument('--label_len', type=int, default=2, help='start token length')
+    parser.add_argument('--label_len', type=int, default=5, help='start token length')
 
     # model
     parser.add_argument('--bucket_size', type=int, default=4, help='for Reformer')
