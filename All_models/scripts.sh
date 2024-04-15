@@ -9,13 +9,14 @@ SBATCH --job-name=test
 SBATCH --account=ic_fintech296mb
 #
 # Partition:
-
 SBATCH --partition=savio2
 #
 # Wall clock limit:
 SBATCH --time=00:30:00
 
 SBATCH --nodes=1
+
+echo "Starting run at: `date`"
 
 python -u run.py \
  --model Autoformer \
