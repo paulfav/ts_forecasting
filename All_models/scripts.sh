@@ -16,7 +16,7 @@
 
 # SBATCH --nodes=1
 
-echo "Starting run at: `date`
+
 
 python -u run.py --model Autoformer --data Close --data_path close_data.csv --features S --dec_in 1 --enc_in 1 --target close_AAPL --freq h --use_gpu False
 
