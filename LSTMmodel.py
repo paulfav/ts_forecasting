@@ -1,6 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import yfinance as yf
 import torch
 from torch.nn import Module, LSTM, Linear
 from torch.utils.data import DataLoader, TensorDataset
@@ -8,7 +6,6 @@ import numpy as np
 from tqdm import tqdm
 from torch import nn
 from sklearn.metrics import mean_squared_error
-from sklearn.preprocessing import MinMaxScaler
 
 
 use_cuda = torch.cuda.is_available()

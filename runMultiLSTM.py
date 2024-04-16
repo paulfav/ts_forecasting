@@ -1,4 +1,3 @@
-import argparse
 from LSTMmodel import *
 
 
