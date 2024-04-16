@@ -102,9 +102,16 @@ def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_
         
         # Save if better
         if valid_loss_cur < valid_loss_min:
-            print("New best loss: ", valid_loss_cur)
             valid_loss_min = valid_loss_cur
+            bad_epoch = 0
             torch.save(model.state_dict(),"LSTMModel.pth")
+        
+        else:
+            bad_epoch += 1
+            if bad_epoch > 15:
+                break
+    print("Best valid loss: ", valid_loss_cur)
+    print("Best train loss: ", train_loss_cur)
 
 def test_model(x,y, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, input_size = 1, part_train = 0.7, part_valid = 0.2): 
 
