@@ -6,6 +6,7 @@ import numpy as np
 from tqdm import tqdm
 from torch import nn
 from sklearn.metrics import mean_squared_error
+import random
 
 
 use_cuda = torch.cuda.is_available()
@@ -28,7 +29,7 @@ class LSTMModel(nn.Module):
         return out
 
 def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, learning_rate = 0.001,input_size = 1, part_train = 0.7, part_valid = 0.2, epoch = 150): 
-
+    random.seed(70)
     use_cuda = True
 
     # Data loading

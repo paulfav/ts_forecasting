@@ -68,22 +68,24 @@ def run( batch_size = 16, hidden_size = 32, num_layers = 1, dropout_rate = 0, in
 bcs = [8, 16, 32, 64, 128]
 hss = [8, 16, 32, 64, 128]
 nls = [1, 2, 3, 4]
-drs = [0, 0.2, 0.4, 0.6, 0.8]
+drs = [0, 0.2, 0.4, 0.6]
 iss = [1, 8]
 eps = [10, 50, 100, 150, 200]
 tws = [5, 10, 15, 30, 50, 100]
-lrs = [0.0001, 0.001, 0.005, 0.01, 0.05]
+lrs = [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05]
 
 if __name__ == "__main__":
     i=0
 
-    for ins in iss:
+    for ins in [8]:
+        dr = 0
         for nl in nls:
             if nl > 1 :
                 run(input_size = ins, num_layers = nl, dropout_rate = 0.2)
             else:
                 run(input_size = ins, num_layers = nl)
-        nl = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'layers']
+        a = pd.read_csv('results.csv')
+        nl = a[a['input_size']== ins].sort_values(by='mse')["layers"].to_numpy()[0]
         if nl == 1:
             dr = 0
         else:
@@ -91,29 +93,35 @@ if __name__ == "__main__":
 
         for hs in hss:
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr)
-        hs = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'hidden']
+        a = pd.read_csv('results.csv')
+        hs = a[a['input_size']== ins].sort_values(by='mse')['hidden'].to_numpy()[0]
 
         for tw in tws:
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr, timeWindowToUse = tw)
-        tw = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'Window']
+        a = pd.read_csv('results.csv')
+        tw = a[a['input_size']== ins].sort_values(by='mse')['Window'].to_numpy()[0]
 
         for lr in lrs:
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr, timeWindowToUse = tw, learning_rate = lr)
-        lr = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'learning_rate']
+        a = pd.read_csv('results.csv')
+        lr = a[a['input_size']== ins].sort_values(by='mse')['learning_rate'].to_numpy()[0]
 
         for ep in eps:
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr, timeWindowToUse = tw, learning_rate = lr, epoch = ep)
-        ep = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'epochs']
+        a = pd.read_csv('results.csv')
+        ep = int(a[a['input_size']== ins].sort_values(by='mse')['epochs'].to_numpy()[0])
 
         for bc in bcs:
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr, timeWindowToUse = tw, learning_rate = lr, epoch = ep, batch_size = bc)
-        bc = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'batch_size']
+        a = pd.read_csv('results.csv')
+        bc = int(a[a['input_size']== ins].sort_values(by='mse')['batch_size'].to_numpy()[0])
 
         for dr in drs:
             if dr > 0 and ins == 1:
                 continue
             run(input_size = ins, num_layers = nl, hidden_size = hs, dropout_rate = dr, timeWindowToUse = tw, learning_rate = lr, epoch = ep, batch_size = bc)
-        dr = pd.read_csv('results.csv').sort_values(by='mse').loc[0, 'dropout']
+        a = pd.read_csv('results.csv')
+        dr = a[a['input_size']== ins].sort_values(by='mse')['dropout'].to_numpy()[0]
 
 
 
