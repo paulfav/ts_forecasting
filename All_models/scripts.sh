@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # Define the models, targets, and features arrays
-models=("Autoformer" "Informer" "Transformer" "iTransformer" "Reformer")
-targets=("close_AAPL" "close_AMZN" "close_MSFT" "close_META" "close_GOOGL" "close_NVDA" "close_SPY" "close_GM")
+#"Autoformer"
+models=( "Informer" "Transformer" "iTransformer" "Reformer")
+# "close_GOOGL" "close_NVDA" "close_SPY" "close_GM"
+targets=("close_AAPL" "close_AMZN" "close_MSFT" "close_META" )
 features=("S" "MS")
 pred_lens=(1 10 50)
 seq_lens=(10 30 50)
 label_lens=(5 15 25)
-max_jobs=4 # Maximum number of parallel jobs
+max_jobs=5 # Maximum number of parallel jobs
 
 # Function to ensure max parallel jobs
 function job_control {
@@ -17,8 +19,8 @@ function job_control {
 }
 
 # Loop over each model, target, and feature set
-for model in "${models[@]}"; do
-  for target in "${targets[@]}"; do
+for target in "${targets[@]}"; do
+  for model in "${models[@]}"; do
     for feature in "${features[@]}"; do
       for idx in "${!pred_lens[@]}"; do  # Loop through indices of pred_lens
         pred_len="${pred_lens[$idx]}"
