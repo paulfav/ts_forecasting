@@ -1,0 +1,44 @@
+/var/spool/slurmd/job18091541/slurm_script: line 6: SBATCH: command not found
+/var/spool/slurmd/job18091541/slurm_script: line 9: SBATCH: command not found
+/var/spool/slurmd/job18091541/slurm_script: line 12: SBATCH: command not found
+/var/spool/slurmd/job18091541/slurm_script: line 15: SBATCH: command not found
+/var/spool/slurmd/job18091541/slurm_script: line 17: SBATCH: command not found
+Starting run at: Mon Apr 15 22:31:48 PDT 2024
+2024-04-15:22:32:08,435 INFO     [utils.py:148] Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2024-04-15:22:32:08,436 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+Args in experiment:
+Namespace(random_seed=2021, is_training=1, model_id='test', model='Autoformer', data='Close', root_path='./dataset/', data_path='close_data.csv', features='S', target='close_AAPL', freq='h', checkpoints='./checkpoints/', seq_len=7, pred_len=1, label_len=5, bucket_size=4, n_hashes=4, enc_in=1, patch_len=4, stride=8, padding_patch='end', d_model=2, embed_type=0, dec_in=1, c_out=8, n_heads=2, e_layers=1, d_layers=1, d_ff=4, moving_avg=25, factor=1, distil=True, dropout=0.05, embed='fixed', activation='gelu', output_attention=False, do_predict=False, res_attention=True, num_workers=10, itr=1, train_epochs=1, batch_size=256, patience=30, learning_rate=0.001, des='test', loss='mse', lradj='type3', pct_start=0.3, use_amp=False, use_gpu=False, gpu=0, use_multi_gpu=False, devices='0,1,2,3', test_flop=False)
+Use CPU
+>>>>>>>start training : test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+Epoch: 1 cost time: 3.3430681228637695
+Epoch: 1, Steps: 63 | Train Loss: 1.0177540 Vali Loss: 0.8644065 Test Loss: 1.0718695
+Validation loss decreased (inf --> 0.864407).  Saving model ...
+Updating learning rate to 0.001
+>>>>>>>testing : test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test shape: (2048, 1, 8) (2048, 1, 1) (2048, 7, 1)
+mse:1.0718694925308228, mae:0.8296221494674683
+2024-04-15:22:32:48,596 INFO     [utils.py:148] Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2024-04-15:22:32:48,596 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+usage: run.py [-h] [--random_seed RANDOM_SEED] [--is_training IS_TRAINING]
+              [--model_id MODEL_ID] [--model MODEL] [--data DATA]
+              [--root_path ROOT_PATH] [--data_path DATA_PATH]
+              [--features FEATURES] [--target TARGET] [--freq FREQ]
+              [--checkpoints CHECKPOINTS] [--seq_len SEQ_LEN]
+              [--pred_len PRED_LEN] [--label_len LABEL_LEN]
+              [--bucket_size BUCKET_SIZE] [--n_hashes N_HASHES]
+              [--enc_in ENC_IN] [--patch_len PATCH_LEN] [--stride STRIDE]
+              [--padding_patch PADDING_PATCH] [--d_model D_MODEL]
+              [--embed_type EMBED_TYPE] [--dec_in DEC_IN] [--c_out C_OUT]
+              [--n_heads N_HEADS] [--e_layers E_LAYERS] [--d_layers D_LAYERS]
+              [--d_ff D_FF] [--moving_avg MOVING_AVG] [--factor FACTOR]
+              [--distil] [--dropout DROPOUT] [--embed EMBED]
+              [--activation ACTIVATION] [--output_attention] [--do_predict]
+              [--res_attention RES_ATTENTION] [--num_workers NUM_WORKERS]
+              [--itr ITR] [--train_epochs TRAIN_EPOCHS]
+              [--batch_size BATCH_SIZE] [--patience PATIENCE]
+              [--learning_rate LEARNING_RATE] [--des DES] [--loss LOSS]
+              [--lradj LRADJ] [--pct_start PCT_START] [--use_amp]
+              [--use_gpu USE_GPU] [--gpu GPU] [--use_multi_gpu]
+              [--devices DEVICES] [--test_flop]
+run.py: error: unrecognized arguments:  
+/var/spool/slurmd/job18091541/slurm_script: line 34: --data: command not found
