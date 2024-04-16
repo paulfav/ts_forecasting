@@ -105,7 +105,7 @@ def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_
         
         else:
             bad_epoch += 1
-            if bad_epoch > 15:
+            if bad_epoch > 10:
                 break
     print("Best valid loss: ", valid_loss_cur)
     print("Best train loss: ", train_loss_cur)

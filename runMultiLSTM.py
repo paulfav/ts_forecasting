@@ -39,7 +39,7 @@ def getfeatures(input_size = 1, timeWindowToUse = 15):
         return x[timeWindowToUse:], y[timeWindowToUse:]
 
     
-def run( batch_size = 16, hidden_size = 32, num_layers = 1, dropout_rate = 0, input_size = 1, epoch = 5, timeWindowToUse = 15, learning_rate = 0.005):
+def run( batch_size = 16, hidden_size = 32, num_layers = 1, dropout_rate = 0, input_size = 1, epoch = 50, timeWindowToUse = 15, learning_rate = 0.005):
     if input_size == 1:
         x, y  = getfeatures(1, timeWindowToUse)
         input_size = 1
@@ -70,7 +70,7 @@ hss = [8, 16, 32, 64, 128]
 nls = [1, 2, 3, 4]
 drs = [0, 0.2, 0.4, 0.6, 0.8]
 iss = [1, 8]
-eps = [10, 50, 100, 150]
+eps = [10, 50, 100, 150, 200]
 tws = [5, 10, 15, 30, 50, 100]
 lrs = [0.0001, 0.001, 0.005, 0.01, 0.05]
 
