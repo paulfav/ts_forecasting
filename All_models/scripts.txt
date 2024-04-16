@@ -1,7 +1,8 @@
 
 
+sbatch -A ic_fintech296mb -p savio2 -t 00:00:30 -N 1 scripts.sh
 
-
+cat slurm-{insert_batch_num}.out
 
 - Autoformer
     Attention : dec_in must be 1 if features is S
