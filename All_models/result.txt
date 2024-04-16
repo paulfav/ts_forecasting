@@ -11,3 +11,9 @@ mse:1.0721652507781982, mae:0.8297104835510254
 test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0  
 mse:1.0718694925308228, mae:0.8296221494674683
 
+test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0  
+mse:1.0718694925308228, mae:0.8296221494674683
+
+test_Autoformer_Close_ftMS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0  
+mse:0.5688552856445312, mae:0.6102056503295898
+
