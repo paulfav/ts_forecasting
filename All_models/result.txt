@@ -8,3 +8,6 @@ mse:0.023110006004571915, mae:0.10500328987836838
 test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0  
 mse:1.0721652507781982, mae:0.8297104835510254
 
+test_Autoformer_Close_ftS_sl7_ll5_pl1_dm2_nh2_el1_dl1_df4_fc1_ebfixed_dtTrue_test_0  
+mse:1.0718694925308228, mae:0.8296221494674683
+
