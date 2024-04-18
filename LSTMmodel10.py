@@ -13,7 +13,7 @@ use_cuda = torch.cuda.is_available()
 
 
 class LSTMModel(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers, dropout_rate=0.2, output_size = 1):
+    def __init__(self, input_size, hidden_size, num_layers, dropout_rate=0.2, output_size = 50):
         super(LSTMModel, self).__init__()
         self.hidden_size = hidden_size
         self.num_layers = num_layers
@@ -28,7 +28,7 @@ class LSTMModel(nn.Module):
         out = self.fc(out[:, -1, :])
         return out
 
-def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, learning_rate = 0.001,input_size = 1, part_train = 0.7, part_valid = 0.2, epoch = 150, output_size = 10): 
+def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, learning_rate = 0.001,input_size = 1, part_train = 0.7, part_valid = 0.2, epoch = 150, output_size = 50): 
     random.seed(70)
     use_cuda = True
 
@@ -111,9 +111,9 @@ def train_model(x,y, batch_size = 64, hidden_size = 32, num_layers = 2, dropout_
     print("Best valid loss: ", valid_loss_cur)
     print("Best train loss: ", train_loss_cur)
 
-def test_model(x,y, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, input_size = 1, part_train = 0.7, part_valid = 0.2, output_size=10): 
+def test_model(x,y, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, input_size = 1, part_train = 0.7, part_valid = 0.2, output_size=50): 
 
-
+    print(y, y.shape)
     test_X = x[int((part_train + part_valid) * len(x)):]
     true_Y = y[int((part_train + part_valid) * len(y)):]
 
@@ -139,8 +139,8 @@ def test_model(x,y, hidden_size = 32, num_layers = 2, dropout_rate = 0.2, input_
             pred_X = model(data_X)
             predictions.append(pred_X.detach().cpu().numpy())
     pred_y = np.concatenate(predictions, axis=0)
-    print(pred_y)
-    print(true_Y)
+    print("pred:", pred_y)
+    print("true", true_Y)
     pred_y = pred_y[:, -1]
 
     true_Y = true_Y[:, -1]
